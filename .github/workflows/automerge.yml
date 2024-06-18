@@ -17,6 +17,10 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - name: Enable Automerge
         run: gh pr merge --auto --squash "$PR_URL"
