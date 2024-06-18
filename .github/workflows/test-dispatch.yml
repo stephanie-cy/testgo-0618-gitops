@@ -17,8 +17,8 @@ jobs:
           sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
           REPONAME=$(basename $sourceRepoURL)
           echo "token is ${{ secrets.GITHUB_TOKEN }}"
-          # git config --global user.email "redhat-dev-ai@example.com"
-          # git config --global user.name "oauth2"
+          git config --global user.email "redhat-dev-ai@example.com"
+          git config --global user.name "redhat-dev-ai"
           # curl -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'
           git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/stephanie-cy/testgo-0618-gitops
   
