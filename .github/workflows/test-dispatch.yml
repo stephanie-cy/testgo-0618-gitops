@@ -16,6 +16,7 @@ jobs:
         run: |
           sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
           REPONAME=$(basename $sourceRepoURL)
+          echo "token is ${{ secrets.GITHUB_TOKEN }}"
           git config --global user.email "redhat-dev-ai@example.com"
           git config --global user.name "oauth2"
   

@@ -40,5 +40,6 @@ spec:
         branchOrTagName: main
         workflowId: test-dispatch.yml
         token: ${{ secrets.USER_OAUTH_TOKEN }}
-        workflowInputs:
+        workflowInputs: {
           source_repo_url: https://github.com/stephanie-cy/testgo-0618
+        }
