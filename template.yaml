@@ -2,27 +2,31 @@ apiVersion: scaffolder.backstage.io/v1beta3
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
-  name: test
-  title: test workflow
+  name: test2
+  title: test workflow2
   description: test workflow
 spec:
   type: service
   # These parameters are used to generate the input form in the frontend, and are
   # used to gather input data for the execution of the template.
   parameters:
-    - title: Application Information
+    - title: Choose a location
       required:
-        - name
+        - repoUrl
       properties:
-        name:
-          title: Name
+        repoUrl:
+          title: Repository Location
           type: string
-          description: Unique name of the component
-          ui:autofocus: true
+          ui:field: RepoUrlPicker
           ui:options:
-            rows: 5
-          ui:field: EntityNamePicker
-          maxLength: 63
+            # Here's the option you can pass to the RepoUrlPicker
+            requestUserCredentials:
+              secretsKey: USER_OAUTH_TOKEN
+              additionalScopes:
+                github:
+                  - workflow:write
+            allowedHosts:
+              - github.com
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
   steps:
