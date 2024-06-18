@@ -1,0 +1,39 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+kind: Template
+metadata:
+  name: test
+  title: test workflow
+  description: test workflow
+spec:
+  type: service
+  # These parameters are used to generate the input form in the frontend, and are
+  # used to gather input data for the execution of the template.
+  parameters:
+    - title: Application Information
+      required:
+        - name
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+          ui:field: EntityNamePicker
+          maxLength: 63
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+    # Each step executes an action, in this case one templates files into the workspace.
+    # Get the sample source code
+    - id: trigger_gh_workflow
+      name: Trigger GitHub workflow
+      action: github:actions:dispatch
+      input:
+        repoUrl: github.com?repo=testgo-0618-gitops&owner=stephanie-cy
+        branchOrTagName: main
+        workflowId: test-dispatch.yml
+        workflowInputs:
+          source_repo_url: https://github.com/stephanie-cy/testgo-0618
