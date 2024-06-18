@@ -18,12 +18,13 @@ jobs:
           repository: stephanie-cy/testgo-0618
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
-        commit-message: 'ci: tigger pipeline build'
-        delete-branch: true
-        title: 'ci: tigger pipeline build'
-        labels: |
-            automated pr
-            automerge
+        with:
+          commit-message: 'ci: tigger pipeline build'
+          delete-branch: true
+          title: 'ci: tigger pipeline build'
+          labels: |
+              automated pr
+              automerge
       # - name: Trigger pipelinerun in source repo URL
       #   run: |
       #     sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
