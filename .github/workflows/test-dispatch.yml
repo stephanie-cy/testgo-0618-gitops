@@ -19,8 +19,9 @@ jobs:
           echo "token is ${{ secrets.GITHUB_TOKEN }}"
           # git config --global user.email "redhat-dev-ai@example.com"
           # git config --global user.name "oauth2"
-          curl -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'
+          # curl -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'
+          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/stephanie-cy/testgo-0618-gitops
   
-          git clone $sourceRepoURL
+          # git clone $sourceRepoURL
           cd $REPONAME
           git commit --allow-empty -m "Trigger Build" && git push 
