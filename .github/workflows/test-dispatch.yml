@@ -16,14 +16,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: stephanie-cy/testgo-0618
-      - name: Trigger pipelinerun in source repo URL
-        run: |
-          sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
-          REPONAME=$(basename $sourceRepoURL)
-          # echo "token is ${{ secrets.GITHUB_TOKEN }}"
-          git config --global user.email "redhat-dev-ai@example.com"
-          git config --global user.name "redhat-dev-ai"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        commit-message: 'ci: tigger pipeline build'
+        delete-branch: true
+        title: 'ci: tigger pipeline build'
+        labels: |
+            automated pr
+            automerge
+      # - name: Trigger pipelinerun in source repo URL
+      #   run: |
+      #     sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
+      #     REPONAME=$(basename $sourceRepoURL)
+      #     # echo "token is ${{ secrets.GITHUB_TOKEN }}"
+      #     git config --global user.email "redhat-dev-ai@example.com"
+      #     git config --global user.name "redhat-dev-ai"
   
-          # git clone $sourceRepoURL
-          # cd $REPONAME
-          git commit --allow-empty -m "Trigger Build" && git push 
+      #     # git clone $sourceRepoURL
+      #     # cd $REPONAME
+      #     git commit --allow-empty -m "Trigger Build" && git push 
