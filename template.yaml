@@ -39,7 +39,6 @@ spec:
         repoUrl: github.com?repo=testgo-0618-gitops&owner=stephanie-cy
         branchOrTagName: main
         workflowId: test-dispatch.yml
-        token: ${{ secrets.USER_OAUTH_TOKEN }}
         workflowInputs: {
           source_repo_url: https://github.com/stephanie-cy/testgo-0618
         }
