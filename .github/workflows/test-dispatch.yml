@@ -24,7 +24,7 @@ jobs:
           git config --global user.email "scaffolder@backstage.io"
           git config --global user.name "Scaffolder"
           git checkout -b trigger-build
-          git commit --allow-empty -m "Trigger Build" && git push 
+          git commit --allow-empty -m "Trigger Build"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
