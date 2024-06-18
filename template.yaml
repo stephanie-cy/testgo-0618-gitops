@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
-  name: test3
-  title: test workflow3
+  name: test4
+  title: test workflow4
   description: test workflow
 spec:
   type: service
