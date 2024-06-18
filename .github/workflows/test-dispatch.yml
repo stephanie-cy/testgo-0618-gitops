@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out source repo URL
+        uses: actions/checkout@v4
+        with:
+          repository: stephanie-cy/testgo-0618
       - name: Trigger pipelinerun in source repo URL
         run: |
           sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
@@ -19,8 +23,6 @@ jobs:
           echo "token is ${{ secrets.GITHUB_TOKEN }}"
           git config --global user.email "redhat-dev-ai@example.com"
           git config --global user.name "redhat-dev-ai"
-          # curl -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'
-          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/stephanie-cy/testgo-0618-gitops
   
           # git clone $sourceRepoURL
           cd $REPONAME
