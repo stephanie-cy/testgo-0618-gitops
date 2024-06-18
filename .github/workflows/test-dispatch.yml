@@ -16,6 +16,7 @@ jobs:
         run: |
           sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
           REPONAME=$(basename $sourceRepoURL)
+          git config --global user.name "oauth2"
   
           git clone $sourceRepoURL
           cd $REPONAME
