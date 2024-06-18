@@ -20,10 +20,10 @@ jobs:
         run: |
           sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
           REPONAME=$(basename $sourceRepoURL)
-          echo "token is ${{ secrets.GITHUB_TOKEN }}"
+          # echo "token is ${{ secrets.GITHUB_TOKEN }}"
           git config --global user.email "redhat-dev-ai@example.com"
           git config --global user.name "redhat-dev-ai"
   
           # git clone $sourceRepoURL
-          cd $REPONAME
+          # cd $REPONAME
           git commit --allow-empty -m "Trigger Build" && git push 
