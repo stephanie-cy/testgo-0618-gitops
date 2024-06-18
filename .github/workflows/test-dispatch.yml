@@ -16,8 +16,6 @@ jobs:
         run: |
           sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
           REPONAME=$(basename $sourceRepoURL)
-          git config --global user.email "redhat-dev-ai@example.com"
-          git config --global user.name "redhat-dev-ai"
   
           git clone $sourceRepoURL
           cd $REPONAME

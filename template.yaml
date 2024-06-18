@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
-  name: test2
-  title: test workflow2
+  name: test3
+  title: test workflow3
   description: test workflow
 spec:
   type: service
@@ -39,5 +39,6 @@ spec:
         repoUrl: github.com?repo=testgo-0618-gitops&owner=stephanie-cy
         branchOrTagName: main
         workflowId: test-dispatch.yml
+        token: ${{ secrets.USER_OAUTH_TOKEN }}
         workflowInputs:
           source_repo_url: https://github.com/stephanie-cy/testgo-0618
