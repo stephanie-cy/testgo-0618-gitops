@@ -1,0 +1,22 @@
+name: Trigger Target PipelineRun
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_repo_url:
+        description: 'Input the source repo URL that need to trigger the pipelinerun'
+        required: true
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger pipelinerun in source repo URL
+        run: |
+          sourceRepoURL="${{ github.event.inputs.source_repo_url }}"
+          REPONAME=$(basename $sourceRepoURL)
+
+          git clone $sourceRepoURL
+          cd $REPONAME
+          git commit --allow-empty -m "Trigger Build" && git push 
